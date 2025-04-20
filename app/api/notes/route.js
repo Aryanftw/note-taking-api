@@ -15,6 +15,7 @@ export async function GET() {
 export async function POST(req) {
   try {
     const {title,content} = await req.json()
+    console.log('Received data:', { title, content });
 
     if(!title || !content){
       return NextResponse.json({message:"Title or content missing"},{status:500})
@@ -26,6 +27,7 @@ export async function POST(req) {
 
     return NextResponse.json(newNote,{status:200})
   } catch (error) {
+    console.log(error)
      return NextResponse.json({message:"Error in creating a new note"},{status:500})
   }
 }
